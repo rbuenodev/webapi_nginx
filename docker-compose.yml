@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  reverse-proxy:
+    image: reverse-proxy
+    container_name: reverse-proxy
+    build:      
+      context: .
+      dockerfile: Nginx/Dockerfile    
+  api:
+    image: api
+    container_name: api
+    build:
+      context: .      
+      dockerfile: Dockerfile
+    depends_on:
+      - reverse-proxy            
